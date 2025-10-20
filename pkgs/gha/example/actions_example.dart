@@ -4,10 +4,10 @@ void main() {
   // Example: Simple CI workflow with checkout and setup actions
   final ciWorkflow = Workflow(
     name: 'CI',
-    on: WorkflowTriggers({
-      'push': TriggerConfig(branches: ['main']),
-      'pull_request': TriggerConfig(branches: ['main']),
-    }),
+    on: WorkflowTriggers(
+      push: TriggerConfig(branches: ['main']),
+      pullRequest: TriggerConfig(branches: ['main']),
+    ),
     jobs: {
       'build': Job(
         runsOn: RunnerSpec.single('ubuntu-latest'),
@@ -96,9 +96,7 @@ void main() {
   // Example: GitHub Pages deployment
   final pagesWorkflow = Workflow(
     name: 'Deploy to GitHub Pages',
-    on: WorkflowTriggers({
-      'push': TriggerConfig(branches: ['main']),
-    }),
+    on: WorkflowTriggers(push: TriggerConfig(branches: ['main'])),
     permissions: Permissions(
       contents: PermissionLevel.read,
       pages: PermissionLevel.write,
@@ -134,9 +132,7 @@ void main() {
   // Example: Using GitHub Script for complex logic
   final scriptWorkflow = Workflow(
     name: 'GitHub Script Example',
-    on: WorkflowTriggers({
-      'issues': TriggerConfig(types: ['opened']),
-    }),
+    on: WorkflowTriggers(issues: TriggerConfig(types: ['opened'])),
     jobs: {
       'comment': Job(
         runsOn: RunnerSpec.single('ubuntu-latest'),

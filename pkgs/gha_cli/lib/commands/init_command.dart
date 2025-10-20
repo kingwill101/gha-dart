@@ -35,11 +35,6 @@ class InitCommand extends Command<int> {
 
     // Get the appropriate template
     final templateContent = _getTemplate(workflowName);
-    if (templateContent == null) {
-      stderr.writeln('Unknown workflow template: $workflowName');
-      stderr.writeln('Available templates: ci, publish');
-      return 1;
-    }
 
     // Ensure .github/workflows directory exists
     final workflowsDir = Directory(p.join('.github', 'workflows'));
@@ -76,14 +71,14 @@ class InitCommand extends Command<int> {
     return 0;
   }
 
-  String? _getTemplate(String name) {
+  String _getTemplate(String name) {
     switch (name) {
       case 'ci':
         return ciTemplate;
       case 'publish':
         return publishTemplate;
       default:
-        return null;
+        return basicTemplate(name);
     }
   }
 }

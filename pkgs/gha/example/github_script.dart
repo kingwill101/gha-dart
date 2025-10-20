@@ -4,10 +4,10 @@ void main() {
   // GitHub Script workflow examples
   final workflow = Workflow(
     name: 'GitHub Script Examples',
-    on: WorkflowTriggers({
-      'issues': TriggerConfig(types: ['opened']),
-      'pull_request': TriggerConfig(types: ['opened', 'reopened']),
-    }),
+    on: WorkflowTriggers(
+      issues: TriggerConfig(types: ['opened']),
+      pullRequest: TriggerConfig(types: ['opened', 'reopened']),
+    ),
     jobs: {
       'welcome-comment': Job(
         name: 'Welcome new contributors',

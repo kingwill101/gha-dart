@@ -51,7 +51,7 @@ extension WorkflowSaveExtension on Workflow {
 
     outputFile.writeAsStringSync(buffer.toString());
 
-    stdout.writeln('✓ Generated: $filePath');
+    print('✓ Generated: $filePath');
   }
 
   /// Derives a filename from the workflow name.

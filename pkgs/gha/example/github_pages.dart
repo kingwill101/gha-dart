@@ -4,9 +4,7 @@ void main() {
   // GitHub Pages deployment workflow
   final workflow = Workflow(
     name: 'Deploy to GitHub Pages',
-    on: WorkflowTriggers({
-      'push': TriggerConfig(branches: ['main']),
-    }),
+    on: WorkflowTriggers(push: TriggerConfig(branches: ['main'])),
     permissions: Permissions(
       contents: PermissionLevel.read,
       pages: PermissionLevel.write,

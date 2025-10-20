@@ -36,11 +36,11 @@ import 'package:gha/gha.dart';
 void main() {
   final workflow = Workflow(
     name: 'Publish',
-    on: WorkflowTriggers({
-      'push': TriggerConfig(
+    on: WorkflowTriggers(
+      push: TriggerConfig(
         tags: ['v*.*.*'],
       ),
-    }),
+    ),
     jobs: {
       'publish': Job(
         name: 'Publish to pub.dev',
@@ -67,3 +67,54 @@ void main() {
   workflow.save();
 }
 ''';
+
+String basicTemplate(String workflowName) {
+  final displayName = _toTitleCase(workflowName);
+  final jobId = _sanitizeJobId(workflowName);
+
+  return '''
+import 'package:gha/gha.dart';
+
+void main() {
+  final workflow = Workflow(
+    name: '$displayName',
+    on: WorkflowTriggers.simple(['workflow_dispatch']),
+    jobs: {
+      '$jobId': Job(
+        name: '$displayName',
+        runsOn: RunnerSpec.single('ubuntu-latest'),
+        steps: [
+          checkout(),
+          Step(name: 'Run script', run: 'echo "Customize $displayName"'),
+        ],
+      ),
+    },
+  );
+
+  workflow.save();
+}
+''';
+}
+
+String _toTitleCase(String input) {
+  final words = input
+      .replaceAll(RegExp(r'[_\-\s]+'), ' ')
+      .trim()
+      .split(' ')
+      .where((word) => word.isNotEmpty)
+      .map((word) => word[0].toUpperCase() + word.substring(1).toLowerCase())
+      .toList();
+  return words.isEmpty ? 'Workflow' : words.join(' ');
+}
+
+String _sanitizeJobId(String input) {
+  final cleaned = input
+      .toLowerCase()
+      .replaceAll(RegExp(r'[^a-z0-9]+'), '_')
+      .replaceAll(RegExp(r'^_+|_+$'), '');
+  if (cleaned.isEmpty) {
+    return 'workflow_job';
+  }
+  final startsWithLetter = RegExp(r'^[a-z]').hasMatch(cleaned);
+  return startsWithLetter ? cleaned : 'workflow_$cleaned';
+}

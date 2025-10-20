@@ -4,10 +4,10 @@ void main() {
   // Matrix build workflow examples
   final workflow = Workflow(
     name: 'Matrix Builds',
-    on: WorkflowTriggers({
-      'push': TriggerConfig(branches: ['main']),
-      'pull_request': TriggerConfig(branches: ['main']),
-    }),
+    on: WorkflowTriggers(
+      push: TriggerConfig(branches: ['main']),
+      pullRequest: TriggerConfig(branches: ['main']),
+    ),
     jobs: {
       'cross-platform': Job(
         name: 'Build on multiple platforms',

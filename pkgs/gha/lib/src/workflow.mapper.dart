@@ -382,6 +382,9 @@ class WorkflowTriggersMapper extends ClassMapperBase<WorkflowTriggers> {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = WorkflowTriggersMapper._());
       TriggerConfigMapper.ensureInitialized();
+      WorkflowCallConfigMapper.ensureInitialized();
+      WorkflowRunConfigMapper.ensureInitialized();
+      CronScheduleMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -389,17 +392,326 @@ class WorkflowTriggersMapper extends ClassMapperBase<WorkflowTriggers> {
   @override
   final String id = 'WorkflowTriggers';
 
-  static Map<String, TriggerConfig> _$events(WorkflowTriggers v) => v.events;
-  static const Field<WorkflowTriggers, Map<String, TriggerConfig>> _f$events =
-      Field('events', _$events);
+  static TriggerConfig? _$push(WorkflowTriggers v) => v.push;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$push = Field(
+    'push',
+    _$push,
+    opt: true,
+  );
+  static TriggerConfig? _$pullRequest(WorkflowTriggers v) => v.pullRequest;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$pullRequest = Field(
+    'pullRequest',
+    _$pullRequest,
+    key: r'pull_request',
+    opt: true,
+  );
+  static TriggerConfig? _$pullRequestTarget(WorkflowTriggers v) =>
+      v.pullRequestTarget;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$pullRequestTarget =
+      Field(
+        'pullRequestTarget',
+        _$pullRequestTarget,
+        key: r'pull_request_target',
+        opt: true,
+      );
+  static TriggerConfig? _$workflowDispatch(WorkflowTriggers v) =>
+      v.workflowDispatch;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$workflowDispatch =
+      Field(
+        'workflowDispatch',
+        _$workflowDispatch,
+        key: r'workflow_dispatch',
+        opt: true,
+      );
+  static WorkflowCallConfig? _$workflowCall(WorkflowTriggers v) =>
+      v.workflowCall;
+  static const Field<WorkflowTriggers, WorkflowCallConfig> _f$workflowCall =
+      Field('workflowCall', _$workflowCall, key: r'workflow_call', opt: true);
+  static WorkflowRunConfig? _$workflowRun(WorkflowTriggers v) => v.workflowRun;
+  static const Field<WorkflowTriggers, WorkflowRunConfig> _f$workflowRun =
+      Field('workflowRun', _$workflowRun, key: r'workflow_run', opt: true);
+  static List<CronSchedule>? _$schedule(WorkflowTriggers v) => v.schedule;
+  static const Field<WorkflowTriggers, List<CronSchedule>> _f$schedule = Field(
+    'schedule',
+    _$schedule,
+    opt: true,
+  );
+  static TriggerConfig? _$repositoryDispatch(WorkflowTriggers v) =>
+      v.repositoryDispatch;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$repositoryDispatch =
+      Field(
+        'repositoryDispatch',
+        _$repositoryDispatch,
+        key: r'repository_dispatch',
+        opt: true,
+      );
+  static TriggerConfig? _$branchProtectionRule(WorkflowTriggers v) =>
+      v.branchProtectionRule;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$branchProtectionRule =
+      Field(
+        'branchProtectionRule',
+        _$branchProtectionRule,
+        key: r'branch_protection_rule',
+        opt: true,
+      );
+  static TriggerConfig? _$checkRun(WorkflowTriggers v) => v.checkRun;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$checkRun = Field(
+    'checkRun',
+    _$checkRun,
+    key: r'check_run',
+    opt: true,
+  );
+  static TriggerConfig? _$checkSuite(WorkflowTriggers v) => v.checkSuite;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$checkSuite = Field(
+    'checkSuite',
+    _$checkSuite,
+    key: r'check_suite',
+    opt: true,
+  );
+  static TriggerConfig? _$create(WorkflowTriggers v) => v.create;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$create = Field(
+    'create',
+    _$create,
+    opt: true,
+  );
+  static TriggerConfig? _$delete(WorkflowTriggers v) => v.delete;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$delete = Field(
+    'delete',
+    _$delete,
+    opt: true,
+  );
+  static TriggerConfig? _$deployment(WorkflowTriggers v) => v.deployment;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$deployment = Field(
+    'deployment',
+    _$deployment,
+    opt: true,
+  );
+  static TriggerConfig? _$deploymentStatus(WorkflowTriggers v) =>
+      v.deploymentStatus;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$deploymentStatus =
+      Field(
+        'deploymentStatus',
+        _$deploymentStatus,
+        key: r'deployment_status',
+        opt: true,
+      );
+  static TriggerConfig? _$discussion(WorkflowTriggers v) => v.discussion;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$discussion = Field(
+    'discussion',
+    _$discussion,
+    opt: true,
+  );
+  static TriggerConfig? _$discussionComment(WorkflowTriggers v) =>
+      v.discussionComment;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$discussionComment =
+      Field(
+        'discussionComment',
+        _$discussionComment,
+        key: r'discussion_comment',
+        opt: true,
+      );
+  static TriggerConfig? _$fork(WorkflowTriggers v) => v.fork;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$fork = Field(
+    'fork',
+    _$fork,
+    opt: true,
+  );
+  static TriggerConfig? _$gollum(WorkflowTriggers v) => v.gollum;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$gollum = Field(
+    'gollum',
+    _$gollum,
+    opt: true,
+  );
+  static TriggerConfig? _$issueComment(WorkflowTriggers v) => v.issueComment;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$issueComment = Field(
+    'issueComment',
+    _$issueComment,
+    key: r'issue_comment',
+    opt: true,
+  );
+  static TriggerConfig? _$issues(WorkflowTriggers v) => v.issues;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$issues = Field(
+    'issues',
+    _$issues,
+    opt: true,
+  );
+  static TriggerConfig? _$label(WorkflowTriggers v) => v.label;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$label = Field(
+    'label',
+    _$label,
+    opt: true,
+  );
+  static TriggerConfig? _$mergeGroup(WorkflowTriggers v) => v.mergeGroup;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$mergeGroup = Field(
+    'mergeGroup',
+    _$mergeGroup,
+    key: r'merge_group',
+    opt: true,
+  );
+  static TriggerConfig? _$milestone(WorkflowTriggers v) => v.milestone;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$milestone = Field(
+    'milestone',
+    _$milestone,
+    opt: true,
+  );
+  static TriggerConfig? _$pageBuild(WorkflowTriggers v) => v.pageBuild;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$pageBuild = Field(
+    'pageBuild',
+    _$pageBuild,
+    key: r'page_build',
+    opt: true,
+  );
+  static TriggerConfig? _$project(WorkflowTriggers v) => v.project;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$project = Field(
+    'project',
+    _$project,
+    opt: true,
+  );
+  static TriggerConfig? _$projectCard(WorkflowTriggers v) => v.projectCard;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$projectCard = Field(
+    'projectCard',
+    _$projectCard,
+    key: r'project_card',
+    opt: true,
+  );
+  static TriggerConfig? _$projectColumn(WorkflowTriggers v) => v.projectColumn;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$projectColumn = Field(
+    'projectColumn',
+    _$projectColumn,
+    key: r'project_column',
+    opt: true,
+  );
+  static TriggerConfig? _$public(WorkflowTriggers v) => v.public;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$public = Field(
+    'public',
+    _$public,
+    opt: true,
+  );
+  static TriggerConfig? _$pullRequestReview(WorkflowTriggers v) =>
+      v.pullRequestReview;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$pullRequestReview =
+      Field(
+        'pullRequestReview',
+        _$pullRequestReview,
+        key: r'pull_request_review',
+        opt: true,
+      );
+  static TriggerConfig? _$pullRequestReviewComment(WorkflowTriggers v) =>
+      v.pullRequestReviewComment;
+  static const Field<WorkflowTriggers, TriggerConfig>
+  _f$pullRequestReviewComment = Field(
+    'pullRequestReviewComment',
+    _$pullRequestReviewComment,
+    key: r'pull_request_review_comment',
+    opt: true,
+  );
+  static TriggerConfig? _$registryPackage(WorkflowTriggers v) =>
+      v.registryPackage;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$registryPackage =
+      Field(
+        'registryPackage',
+        _$registryPackage,
+        key: r'registry_package',
+        opt: true,
+      );
+  static TriggerConfig? _$release(WorkflowTriggers v) => v.release;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$release = Field(
+    'release',
+    _$release,
+    opt: true,
+  );
+  static TriggerConfig? _$status(WorkflowTriggers v) => v.status;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$status = Field(
+    'status',
+    _$status,
+    opt: true,
+  );
+  static TriggerConfig? _$watch(WorkflowTriggers v) => v.watch;
+  static const Field<WorkflowTriggers, TriggerConfig> _f$watch = Field(
+    'watch',
+    _$watch,
+    opt: true,
+  );
 
   @override
-  final MappableFields<WorkflowTriggers> fields = const {#events: _f$events};
+  final MappableFields<WorkflowTriggers> fields = const {
+    #push: _f$push,
+    #pullRequest: _f$pullRequest,
+    #pullRequestTarget: _f$pullRequestTarget,
+    #workflowDispatch: _f$workflowDispatch,
+    #workflowCall: _f$workflowCall,
+    #workflowRun: _f$workflowRun,
+    #schedule: _f$schedule,
+    #repositoryDispatch: _f$repositoryDispatch,
+    #branchProtectionRule: _f$branchProtectionRule,
+    #checkRun: _f$checkRun,
+    #checkSuite: _f$checkSuite,
+    #create: _f$create,
+    #delete: _f$delete,
+    #deployment: _f$deployment,
+    #deploymentStatus: _f$deploymentStatus,
+    #discussion: _f$discussion,
+    #discussionComment: _f$discussionComment,
+    #fork: _f$fork,
+    #gollum: _f$gollum,
+    #issueComment: _f$issueComment,
+    #issues: _f$issues,
+    #label: _f$label,
+    #mergeGroup: _f$mergeGroup,
+    #milestone: _f$milestone,
+    #pageBuild: _f$pageBuild,
+    #project: _f$project,
+    #projectCard: _f$projectCard,
+    #projectColumn: _f$projectColumn,
+    #public: _f$public,
+    #pullRequestReview: _f$pullRequestReview,
+    #pullRequestReviewComment: _f$pullRequestReviewComment,
+    #registryPackage: _f$registryPackage,
+    #release: _f$release,
+    #status: _f$status,
+    #watch: _f$watch,
+  };
   @override
   final bool ignoreNull = true;
 
   static WorkflowTriggers _instantiate(DecodingData data) {
-    return WorkflowTriggers(data.dec(_f$events));
+    return WorkflowTriggers(
+      push: data.dec(_f$push),
+      pullRequest: data.dec(_f$pullRequest),
+      pullRequestTarget: data.dec(_f$pullRequestTarget),
+      workflowDispatch: data.dec(_f$workflowDispatch),
+      workflowCall: data.dec(_f$workflowCall),
+      workflowRun: data.dec(_f$workflowRun),
+      schedule: data.dec(_f$schedule),
+      repositoryDispatch: data.dec(_f$repositoryDispatch),
+      branchProtectionRule: data.dec(_f$branchProtectionRule),
+      checkRun: data.dec(_f$checkRun),
+      checkSuite: data.dec(_f$checkSuite),
+      create: data.dec(_f$create),
+      delete: data.dec(_f$delete),
+      deployment: data.dec(_f$deployment),
+      deploymentStatus: data.dec(_f$deploymentStatus),
+      discussion: data.dec(_f$discussion),
+      discussionComment: data.dec(_f$discussionComment),
+      fork: data.dec(_f$fork),
+      gollum: data.dec(_f$gollum),
+      issueComment: data.dec(_f$issueComment),
+      issues: data.dec(_f$issues),
+      label: data.dec(_f$label),
+      mergeGroup: data.dec(_f$mergeGroup),
+      milestone: data.dec(_f$milestone),
+      pageBuild: data.dec(_f$pageBuild),
+      project: data.dec(_f$project),
+      projectCard: data.dec(_f$projectCard),
+      projectColumn: data.dec(_f$projectColumn),
+      public: data.dec(_f$public),
+      pullRequestReview: data.dec(_f$pullRequestReview),
+      pullRequestReviewComment: data.dec(_f$pullRequestReviewComment),
+      registryPackage: data.dec(_f$registryPackage),
+      release: data.dec(_f$release),
+      status: data.dec(_f$status),
+      watch: data.dec(_f$watch),
+    );
   }
 
   @override
@@ -464,14 +776,91 @@ extension WorkflowTriggersValueCopy<$R, $Out>
 
 abstract class WorkflowTriggersCopyWith<$R, $In extends WorkflowTriggers, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  MapCopyWith<
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get push;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get pullRequest;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get pullRequestTarget;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get workflowDispatch;
+  WorkflowCallConfigCopyWith<$R, WorkflowCallConfig, WorkflowCallConfig>?
+  get workflowCall;
+  WorkflowRunConfigCopyWith<$R, WorkflowRunConfig, WorkflowRunConfig>?
+  get workflowRun;
+  ListCopyWith<
     $R,
-    String,
-    TriggerConfig,
-    TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>
-  >
-  get events;
-  $R call({Map<String, TriggerConfig>? events});
+    CronSchedule,
+    CronScheduleCopyWith<$R, CronSchedule, CronSchedule>
+  >?
+  get schedule;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get repositoryDispatch;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get branchProtectionRule;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get checkRun;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get checkSuite;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get create;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get delete;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get deployment;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get deploymentStatus;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get discussion;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get discussionComment;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get fork;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get gollum;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get issueComment;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get issues;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get label;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get mergeGroup;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get milestone;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get pageBuild;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get project;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get projectCard;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get projectColumn;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get public;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get pullRequestReview;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get pullRequestReviewComment;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get registryPackage;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get release;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get status;
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get watch;
+  $R call({
+    TriggerConfig? push,
+    TriggerConfig? pullRequest,
+    TriggerConfig? pullRequestTarget,
+    TriggerConfig? workflowDispatch,
+    WorkflowCallConfig? workflowCall,
+    WorkflowRunConfig? workflowRun,
+    List<CronSchedule>? schedule,
+    TriggerConfig? repositoryDispatch,
+    TriggerConfig? branchProtectionRule,
+    TriggerConfig? checkRun,
+    TriggerConfig? checkSuite,
+    TriggerConfig? create,
+    TriggerConfig? delete,
+    TriggerConfig? deployment,
+    TriggerConfig? deploymentStatus,
+    TriggerConfig? discussion,
+    TriggerConfig? discussionComment,
+    TriggerConfig? fork,
+    TriggerConfig? gollum,
+    TriggerConfig? issueComment,
+    TriggerConfig? issues,
+    TriggerConfig? label,
+    TriggerConfig? mergeGroup,
+    TriggerConfig? milestone,
+    TriggerConfig? pageBuild,
+    TriggerConfig? project,
+    TriggerConfig? projectCard,
+    TriggerConfig? projectColumn,
+    TriggerConfig? public,
+    TriggerConfig? pullRequestReview,
+    TriggerConfig? pullRequestReviewComment,
+    TriggerConfig? registryPackage,
+    TriggerConfig? release,
+    TriggerConfig? status,
+    TriggerConfig? watch,
+  });
   WorkflowTriggersCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
   );
@@ -486,23 +875,272 @@ class _WorkflowTriggersCopyWithImpl<$R, $Out>
   late final ClassMapperBase<WorkflowTriggers> $mapper =
       WorkflowTriggersMapper.ensureInitialized();
   @override
-  MapCopyWith<
-    $R,
-    String,
-    TriggerConfig,
-    TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>
-  >
-  get events => MapCopyWith(
-    $value.events,
-    (v, t) => v.copyWith.$chain(t),
-    (v) => call(events: v),
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get push =>
+      $value.push?.copyWith.$chain((v) => call(push: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get pullRequest =>
+      $value.pullRequest?.copyWith.$chain((v) => call(pullRequest: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get pullRequestTarget => $value.pullRequestTarget?.copyWith.$chain(
+    (v) => call(pullRequestTarget: v),
   );
   @override
-  $R call({Map<String, TriggerConfig>? events}) =>
-      $apply(FieldCopyWithData({if (events != null) #events: events}));
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get workflowDispatch => $value.workflowDispatch?.copyWith.$chain(
+    (v) => call(workflowDispatch: v),
+  );
   @override
-  WorkflowTriggers $make(CopyWithData data) =>
-      WorkflowTriggers(data.get(#events, or: $value.events));
+  WorkflowCallConfigCopyWith<$R, WorkflowCallConfig, WorkflowCallConfig>?
+  get workflowCall =>
+      $value.workflowCall?.copyWith.$chain((v) => call(workflowCall: v));
+  @override
+  WorkflowRunConfigCopyWith<$R, WorkflowRunConfig, WorkflowRunConfig>?
+  get workflowRun =>
+      $value.workflowRun?.copyWith.$chain((v) => call(workflowRun: v));
+  @override
+  ListCopyWith<
+    $R,
+    CronSchedule,
+    CronScheduleCopyWith<$R, CronSchedule, CronSchedule>
+  >?
+  get schedule => $value.schedule != null
+      ? ListCopyWith(
+          $value.schedule!,
+          (v, t) => v.copyWith.$chain(t),
+          (v) => call(schedule: v),
+        )
+      : null;
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get repositoryDispatch => $value.repositoryDispatch?.copyWith.$chain(
+    (v) => call(repositoryDispatch: v),
+  );
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get branchProtectionRule => $value.branchProtectionRule?.copyWith.$chain(
+    (v) => call(branchProtectionRule: v),
+  );
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get checkRun =>
+      $value.checkRun?.copyWith.$chain((v) => call(checkRun: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get checkSuite =>
+      $value.checkSuite?.copyWith.$chain((v) => call(checkSuite: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get create =>
+      $value.create?.copyWith.$chain((v) => call(create: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get delete =>
+      $value.delete?.copyWith.$chain((v) => call(delete: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get deployment =>
+      $value.deployment?.copyWith.$chain((v) => call(deployment: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get deploymentStatus => $value.deploymentStatus?.copyWith.$chain(
+    (v) => call(deploymentStatus: v),
+  );
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get discussion =>
+      $value.discussion?.copyWith.$chain((v) => call(discussion: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get discussionComment => $value.discussionComment?.copyWith.$chain(
+    (v) => call(discussionComment: v),
+  );
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get fork =>
+      $value.fork?.copyWith.$chain((v) => call(fork: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get gollum =>
+      $value.gollum?.copyWith.$chain((v) => call(gollum: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get issueComment =>
+      $value.issueComment?.copyWith.$chain((v) => call(issueComment: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get issues =>
+      $value.issues?.copyWith.$chain((v) => call(issues: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get label =>
+      $value.label?.copyWith.$chain((v) => call(label: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get mergeGroup =>
+      $value.mergeGroup?.copyWith.$chain((v) => call(mergeGroup: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get milestone =>
+      $value.milestone?.copyWith.$chain((v) => call(milestone: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get pageBuild =>
+      $value.pageBuild?.copyWith.$chain((v) => call(pageBuild: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get project =>
+      $value.project?.copyWith.$chain((v) => call(project: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get projectCard =>
+      $value.projectCard?.copyWith.$chain((v) => call(projectCard: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get projectColumn =>
+      $value.projectColumn?.copyWith.$chain((v) => call(projectColumn: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get public =>
+      $value.public?.copyWith.$chain((v) => call(public: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get pullRequestReview => $value.pullRequestReview?.copyWith.$chain(
+    (v) => call(pullRequestReview: v),
+  );
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get pullRequestReviewComment => $value.pullRequestReviewComment?.copyWith
+      .$chain((v) => call(pullRequestReviewComment: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>?
+  get registryPackage =>
+      $value.registryPackage?.copyWith.$chain((v) => call(registryPackage: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get release =>
+      $value.release?.copyWith.$chain((v) => call(release: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get status =>
+      $value.status?.copyWith.$chain((v) => call(status: v));
+  @override
+  TriggerConfigCopyWith<$R, TriggerConfig, TriggerConfig>? get watch =>
+      $value.watch?.copyWith.$chain((v) => call(watch: v));
+  @override
+  $R call({
+    Object? push = $none,
+    Object? pullRequest = $none,
+    Object? pullRequestTarget = $none,
+    Object? workflowDispatch = $none,
+    Object? workflowCall = $none,
+    Object? workflowRun = $none,
+    Object? schedule = $none,
+    Object? repositoryDispatch = $none,
+    Object? branchProtectionRule = $none,
+    Object? checkRun = $none,
+    Object? checkSuite = $none,
+    Object? create = $none,
+    Object? delete = $none,
+    Object? deployment = $none,
+    Object? deploymentStatus = $none,
+    Object? discussion = $none,
+    Object? discussionComment = $none,
+    Object? fork = $none,
+    Object? gollum = $none,
+    Object? issueComment = $none,
+    Object? issues = $none,
+    Object? label = $none,
+    Object? mergeGroup = $none,
+    Object? milestone = $none,
+    Object? pageBuild = $none,
+    Object? project = $none,
+    Object? projectCard = $none,
+    Object? projectColumn = $none,
+    Object? public = $none,
+    Object? pullRequestReview = $none,
+    Object? pullRequestReviewComment = $none,
+    Object? registryPackage = $none,
+    Object? release = $none,
+    Object? status = $none,
+    Object? watch = $none,
+  }) => $apply(
+    FieldCopyWithData({
+      if (push != $none) #push: push,
+      if (pullRequest != $none) #pullRequest: pullRequest,
+      if (pullRequestTarget != $none) #pullRequestTarget: pullRequestTarget,
+      if (workflowDispatch != $none) #workflowDispatch: workflowDispatch,
+      if (workflowCall != $none) #workflowCall: workflowCall,
+      if (workflowRun != $none) #workflowRun: workflowRun,
+      if (schedule != $none) #schedule: schedule,
+      if (repositoryDispatch != $none) #repositoryDispatch: repositoryDispatch,
+      if (branchProtectionRule != $none)
+        #branchProtectionRule: branchProtectionRule,
+      if (checkRun != $none) #checkRun: checkRun,
+      if (checkSuite != $none) #checkSuite: checkSuite,
+      if (create != $none) #create: create,
+      if (delete != $none) #delete: delete,
+      if (deployment != $none) #deployment: deployment,
+      if (deploymentStatus != $none) #deploymentStatus: deploymentStatus,
+      if (discussion != $none) #discussion: discussion,
+      if (discussionComment != $none) #discussionComment: discussionComment,
+      if (fork != $none) #fork: fork,
+      if (gollum != $none) #gollum: gollum,
+      if (issueComment != $none) #issueComment: issueComment,
+      if (issues != $none) #issues: issues,
+      if (label != $none) #label: label,
+      if (mergeGroup != $none) #mergeGroup: mergeGroup,
+      if (milestone != $none) #milestone: milestone,
+      if (pageBuild != $none) #pageBuild: pageBuild,
+      if (project != $none) #project: project,
+      if (projectCard != $none) #projectCard: projectCard,
+      if (projectColumn != $none) #projectColumn: projectColumn,
+      if (public != $none) #public: public,
+      if (pullRequestReview != $none) #pullRequestReview: pullRequestReview,
+      if (pullRequestReviewComment != $none)
+        #pullRequestReviewComment: pullRequestReviewComment,
+      if (registryPackage != $none) #registryPackage: registryPackage,
+      if (release != $none) #release: release,
+      if (status != $none) #status: status,
+      if (watch != $none) #watch: watch,
+    }),
+  );
+  @override
+  WorkflowTriggers $make(CopyWithData data) => WorkflowTriggers(
+    push: data.get(#push, or: $value.push),
+    pullRequest: data.get(#pullRequest, or: $value.pullRequest),
+    pullRequestTarget: data.get(
+      #pullRequestTarget,
+      or: $value.pullRequestTarget,
+    ),
+    workflowDispatch: data.get(#workflowDispatch, or: $value.workflowDispatch),
+    workflowCall: data.get(#workflowCall, or: $value.workflowCall),
+    workflowRun: data.get(#workflowRun, or: $value.workflowRun),
+    schedule: data.get(#schedule, or: $value.schedule),
+    repositoryDispatch: data.get(
+      #repositoryDispatch,
+      or: $value.repositoryDispatch,
+    ),
+    branchProtectionRule: data.get(
+      #branchProtectionRule,
+      or: $value.branchProtectionRule,
+    ),
+    checkRun: data.get(#checkRun, or: $value.checkRun),
+    checkSuite: data.get(#checkSuite, or: $value.checkSuite),
+    create: data.get(#create, or: $value.create),
+    delete: data.get(#delete, or: $value.delete),
+    deployment: data.get(#deployment, or: $value.deployment),
+    deploymentStatus: data.get(#deploymentStatus, or: $value.deploymentStatus),
+    discussion: data.get(#discussion, or: $value.discussion),
+    discussionComment: data.get(
+      #discussionComment,
+      or: $value.discussionComment,
+    ),
+    fork: data.get(#fork, or: $value.fork),
+    gollum: data.get(#gollum, or: $value.gollum),
+    issueComment: data.get(#issueComment, or: $value.issueComment),
+    issues: data.get(#issues, or: $value.issues),
+    label: data.get(#label, or: $value.label),
+    mergeGroup: data.get(#mergeGroup, or: $value.mergeGroup),
+    milestone: data.get(#milestone, or: $value.milestone),
+    pageBuild: data.get(#pageBuild, or: $value.pageBuild),
+    project: data.get(#project, or: $value.project),
+    projectCard: data.get(#projectCard, or: $value.projectCard),
+    projectColumn: data.get(#projectColumn, or: $value.projectColumn),
+    public: data.get(#public, or: $value.public),
+    pullRequestReview: data.get(
+      #pullRequestReview,
+      or: $value.pullRequestReview,
+    ),
+    pullRequestReviewComment: data.get(
+      #pullRequestReviewComment,
+      or: $value.pullRequestReviewComment,
+    ),
+    registryPackage: data.get(#registryPackage, or: $value.registryPackage),
+    release: data.get(#release, or: $value.release),
+    status: data.get(#status, or: $value.status),
+    watch: data.get(#watch, or: $value.watch),
+  );
 
   @override
   WorkflowTriggersCopyWith<$R2, WorkflowTriggers, $Out2> $chain<$R2, $Out2>(
@@ -518,9 +1156,6 @@ class TriggerConfigMapper extends ClassMapperBase<TriggerConfig> {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = TriggerConfigMapper._());
       WorkflowInputMapper.ensureInitialized();
-      CronScheduleMapper.ensureInitialized();
-      WorkflowCallConfigMapper.ensureInitialized();
-      WorkflowRunConfigMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -576,24 +1211,10 @@ class TriggerConfigMapper extends ClassMapperBase<TriggerConfig> {
   static Map<String, WorkflowInput>? _$inputs(TriggerConfig v) => v.inputs;
   static const Field<TriggerConfig, Map<String, WorkflowInput>> _f$inputs =
       Field('inputs', _$inputs, opt: true);
-  static List<CronSchedule>? _$schedule(TriggerConfig v) => v.schedule;
-  static const Field<TriggerConfig, List<CronSchedule>> _f$schedule = Field(
-    'schedule',
-    _$schedule,
-    opt: true,
-  );
-  static WorkflowCallConfig? _$workflowCall(TriggerConfig v) => v.workflowCall;
-  static const Field<TriggerConfig, WorkflowCallConfig> _f$workflowCall = Field(
-    'workflowCall',
-    _$workflowCall,
-    key: r'workflow_call',
-    opt: true,
-  );
-  static WorkflowRunConfig? _$workflowRun(TriggerConfig v) => v.workflowRun;
-  static const Field<TriggerConfig, WorkflowRunConfig> _f$workflowRun = Field(
-    'workflowRun',
-    _$workflowRun,
-    key: r'workflow_run',
+  static List<String>? _$workflows(TriggerConfig v) => v.workflows;
+  static const Field<TriggerConfig, List<String>> _f$workflows = Field(
+    'workflows',
+    _$workflows,
     opt: true,
   );
 
@@ -607,9 +1228,7 @@ class TriggerConfigMapper extends ClassMapperBase<TriggerConfig> {
     #paths: _f$paths,
     #pathsIgnore: _f$pathsIgnore,
     #inputs: _f$inputs,
-    #schedule: _f$schedule,
-    #workflowCall: _f$workflowCall,
-    #workflowRun: _f$workflowRun,
+    #workflows: _f$workflows,
   };
   @override
   final bool ignoreNull = true;
@@ -624,9 +1243,7 @@ class TriggerConfigMapper extends ClassMapperBase<TriggerConfig> {
       paths: data.dec(_f$paths),
       pathsIgnore: data.dec(_f$pathsIgnore),
       inputs: data.dec(_f$inputs),
-      schedule: data.dec(_f$schedule),
-      workflowCall: data.dec(_f$workflowCall),
-      workflowRun: data.dec(_f$workflowRun),
+      workflows: data.dec(_f$workflows),
     );
   }
 
@@ -707,16 +1324,7 @@ abstract class TriggerConfigCopyWith<$R, $In extends TriggerConfig, $Out>
     WorkflowInputCopyWith<$R, WorkflowInput, WorkflowInput>
   >?
   get inputs;
-  ListCopyWith<
-    $R,
-    CronSchedule,
-    CronScheduleCopyWith<$R, CronSchedule, CronSchedule>
-  >?
-  get schedule;
-  WorkflowCallConfigCopyWith<$R, WorkflowCallConfig, WorkflowCallConfig>?
-  get workflowCall;
-  WorkflowRunConfigCopyWith<$R, WorkflowRunConfig, WorkflowRunConfig>?
-  get workflowRun;
+  ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>>? get workflows;
   $R call({
     List<String>? types,
     List<String>? branches,
@@ -726,9 +1334,7 @@ abstract class TriggerConfigCopyWith<$R, $In extends TriggerConfig, $Out>
     List<String>? paths,
     List<String>? pathsIgnore,
     Map<String, WorkflowInput>? inputs,
-    List<CronSchedule>? schedule,
-    WorkflowCallConfig? workflowCall,
-    WorkflowRunConfig? workflowRun,
+    List<String>? workflows,
   });
   TriggerConfigCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
@@ -819,26 +1425,14 @@ class _TriggerConfigCopyWithImpl<$R, $Out>
         )
       : null;
   @override
-  ListCopyWith<
-    $R,
-    CronSchedule,
-    CronScheduleCopyWith<$R, CronSchedule, CronSchedule>
-  >?
-  get schedule => $value.schedule != null
+  ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>>? get workflows =>
+      $value.workflows != null
       ? ListCopyWith(
-          $value.schedule!,
-          (v, t) => v.copyWith.$chain(t),
-          (v) => call(schedule: v),
+          $value.workflows!,
+          (v, t) => ObjectCopyWith(v, $identity, t),
+          (v) => call(workflows: v),
         )
       : null;
-  @override
-  WorkflowCallConfigCopyWith<$R, WorkflowCallConfig, WorkflowCallConfig>?
-  get workflowCall =>
-      $value.workflowCall?.copyWith.$chain((v) => call(workflowCall: v));
-  @override
-  WorkflowRunConfigCopyWith<$R, WorkflowRunConfig, WorkflowRunConfig>?
-  get workflowRun =>
-      $value.workflowRun?.copyWith.$chain((v) => call(workflowRun: v));
   @override
   $R call({
     Object? types = $none,
@@ -849,9 +1443,7 @@ class _TriggerConfigCopyWithImpl<$R, $Out>
     Object? paths = $none,
     Object? pathsIgnore = $none,
     Object? inputs = $none,
-    Object? schedule = $none,
-    Object? workflowCall = $none,
-    Object? workflowRun = $none,
+    Object? workflows = $none,
   }) => $apply(
     FieldCopyWithData({
       if (types != $none) #types: types,
@@ -862,9 +1454,7 @@ class _TriggerConfigCopyWithImpl<$R, $Out>
       if (paths != $none) #paths: paths,
       if (pathsIgnore != $none) #pathsIgnore: pathsIgnore,
       if (inputs != $none) #inputs: inputs,
-      if (schedule != $none) #schedule: schedule,
-      if (workflowCall != $none) #workflowCall: workflowCall,
-      if (workflowRun != $none) #workflowRun: workflowRun,
+      if (workflows != $none) #workflows: workflows,
     }),
   );
   @override
@@ -877,9 +1467,7 @@ class _TriggerConfigCopyWithImpl<$R, $Out>
     paths: data.get(#paths, or: $value.paths),
     pathsIgnore: data.get(#pathsIgnore, or: $value.pathsIgnore),
     inputs: data.get(#inputs, or: $value.inputs),
-    schedule: data.get(#schedule, or: $value.schedule),
-    workflowCall: data.get(#workflowCall, or: $value.workflowCall),
-    workflowRun: data.get(#workflowRun, or: $value.workflowRun),
+    workflows: data.get(#workflows, or: $value.workflows),
   );
 
   @override
@@ -1089,119 +1677,6 @@ class _WorkflowInputCopyWithImpl<$R, $Out>
   WorkflowInputCopyWith<$R2, WorkflowInput, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
   ) => _WorkflowInputCopyWithImpl<$R2, $Out2>($value, $cast, t);
-}
-
-class CronScheduleMapper extends ClassMapperBase<CronSchedule> {
-  CronScheduleMapper._();
-
-  static CronScheduleMapper? _instance;
-  static CronScheduleMapper ensureInitialized() {
-    if (_instance == null) {
-      MapperContainer.globals.use(_instance = CronScheduleMapper._());
-    }
-    return _instance!;
-  }
-
-  @override
-  final String id = 'CronSchedule';
-
-  static String _$cron(CronSchedule v) => v.cron;
-  static const Field<CronSchedule, String> _f$cron = Field('cron', _$cron);
-
-  @override
-  final MappableFields<CronSchedule> fields = const {#cron: _f$cron};
-  @override
-  final bool ignoreNull = true;
-
-  static CronSchedule _instantiate(DecodingData data) {
-    return CronSchedule(data.dec(_f$cron));
-  }
-
-  @override
-  final Function instantiate = _instantiate;
-
-  static CronSchedule fromMap(Map<String, dynamic> map) {
-    return ensureInitialized().decodeMap<CronSchedule>(map);
-  }
-
-  static CronSchedule fromJson(String json) {
-    return ensureInitialized().decodeJson<CronSchedule>(json);
-  }
-}
-
-mixin CronScheduleMappable {
-  String toJson() {
-    return CronScheduleMapper.ensureInitialized().encodeJson<CronSchedule>(
-      this as CronSchedule,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return CronScheduleMapper.ensureInitialized().encodeMap<CronSchedule>(
-      this as CronSchedule,
-    );
-  }
-
-  CronScheduleCopyWith<CronSchedule, CronSchedule, CronSchedule> get copyWith =>
-      _CronScheduleCopyWithImpl<CronSchedule, CronSchedule>(
-        this as CronSchedule,
-        $identity,
-        $identity,
-      );
-  @override
-  String toString() {
-    return CronScheduleMapper.ensureInitialized().stringifyValue(
-      this as CronSchedule,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return CronScheduleMapper.ensureInitialized().equalsValue(
-      this as CronSchedule,
-      other,
-    );
-  }
-
-  @override
-  int get hashCode {
-    return CronScheduleMapper.ensureInitialized().hashValue(
-      this as CronSchedule,
-    );
-  }
-}
-
-extension CronScheduleValueCopy<$R, $Out>
-    on ObjectCopyWith<$R, CronSchedule, $Out> {
-  CronScheduleCopyWith<$R, CronSchedule, $Out> get $asCronSchedule =>
-      $base.as((v, t, t2) => _CronScheduleCopyWithImpl<$R, $Out>(v, t, t2));
-}
-
-abstract class CronScheduleCopyWith<$R, $In extends CronSchedule, $Out>
-    implements ClassCopyWith<$R, $In, $Out> {
-  $R call({String? cron});
-  CronScheduleCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
-}
-
-class _CronScheduleCopyWithImpl<$R, $Out>
-    extends ClassCopyWithBase<$R, CronSchedule, $Out>
-    implements CronScheduleCopyWith<$R, CronSchedule, $Out> {
-  _CronScheduleCopyWithImpl(super.value, super.then, super.then2);
-
-  @override
-  late final ClassMapperBase<CronSchedule> $mapper =
-      CronScheduleMapper.ensureInitialized();
-  @override
-  $R call({String? cron}) =>
-      $apply(FieldCopyWithData({if (cron != null) #cron: cron}));
-  @override
-  CronSchedule $make(CopyWithData data) =>
-      CronSchedule(data.get(#cron, or: $value.cron));
-
-  @override
-  CronScheduleCopyWith<$R2, CronSchedule, $Out2> $chain<$R2, $Out2>(
-    Then<$Out2, $R2> t,
-  ) => _CronScheduleCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class WorkflowCallConfigMapper extends ClassMapperBase<WorkflowCallConfig> {
@@ -1862,6 +2337,119 @@ class _WorkflowRunConfigCopyWithImpl<$R, $Out>
   WorkflowRunConfigCopyWith<$R2, WorkflowRunConfig, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
   ) => _WorkflowRunConfigCopyWithImpl<$R2, $Out2>($value, $cast, t);
+}
+
+class CronScheduleMapper extends ClassMapperBase<CronSchedule> {
+  CronScheduleMapper._();
+
+  static CronScheduleMapper? _instance;
+  static CronScheduleMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = CronScheduleMapper._());
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'CronSchedule';
+
+  static String _$cron(CronSchedule v) => v.cron;
+  static const Field<CronSchedule, String> _f$cron = Field('cron', _$cron);
+
+  @override
+  final MappableFields<CronSchedule> fields = const {#cron: _f$cron};
+  @override
+  final bool ignoreNull = true;
+
+  static CronSchedule _instantiate(DecodingData data) {
+    return CronSchedule(data.dec(_f$cron));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static CronSchedule fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<CronSchedule>(map);
+  }
+
+  static CronSchedule fromJson(String json) {
+    return ensureInitialized().decodeJson<CronSchedule>(json);
+  }
+}
+
+mixin CronScheduleMappable {
+  String toJson() {
+    return CronScheduleMapper.ensureInitialized().encodeJson<CronSchedule>(
+      this as CronSchedule,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return CronScheduleMapper.ensureInitialized().encodeMap<CronSchedule>(
+      this as CronSchedule,
+    );
+  }
+
+  CronScheduleCopyWith<CronSchedule, CronSchedule, CronSchedule> get copyWith =>
+      _CronScheduleCopyWithImpl<CronSchedule, CronSchedule>(
+        this as CronSchedule,
+        $identity,
+        $identity,
+      );
+  @override
+  String toString() {
+    return CronScheduleMapper.ensureInitialized().stringifyValue(
+      this as CronSchedule,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return CronScheduleMapper.ensureInitialized().equalsValue(
+      this as CronSchedule,
+      other,
+    );
+  }
+
+  @override
+  int get hashCode {
+    return CronScheduleMapper.ensureInitialized().hashValue(
+      this as CronSchedule,
+    );
+  }
+}
+
+extension CronScheduleValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, CronSchedule, $Out> {
+  CronScheduleCopyWith<$R, CronSchedule, $Out> get $asCronSchedule =>
+      $base.as((v, t, t2) => _CronScheduleCopyWithImpl<$R, $Out>(v, t, t2));
+}
+
+abstract class CronScheduleCopyWith<$R, $In extends CronSchedule, $Out>
+    implements ClassCopyWith<$R, $In, $Out> {
+  $R call({String? cron});
+  CronScheduleCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _CronScheduleCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, CronSchedule, $Out>
+    implements CronScheduleCopyWith<$R, CronSchedule, $Out> {
+  _CronScheduleCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<CronSchedule> $mapper =
+      CronScheduleMapper.ensureInitialized();
+  @override
+  $R call({String? cron}) =>
+      $apply(FieldCopyWithData({if (cron != null) #cron: cron}));
+  @override
+  CronSchedule $make(CopyWithData data) =>
+      CronSchedule(data.get(#cron, or: $value.cron));
+
+  @override
+  CronScheduleCopyWith<$R2, CronSchedule, $Out2> $chain<$R2, $Out2>(
+    Then<$Out2, $R2> t,
+  ) => _CronScheduleCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class JobMapper extends ClassMapperBase<Job> {

@@ -4,10 +4,10 @@ void main() {
   // Basic CI workflow with Node.js
   final workflow = Workflow(
     name: 'CI',
-    on: WorkflowTriggers({
-      'push': TriggerConfig(branches: ['main']),
-      'pull_request': TriggerConfig(branches: ['main']),
-    }),
+    on: WorkflowTriggers(
+      push: TriggerConfig(branches: ['main']),
+      pullRequest: TriggerConfig(branches: ['main']),
+    ),
     jobs: {
       'build': Job(
         runsOn: RunnerSpec.single('ubuntu-latest'),
