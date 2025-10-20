@@ -18,13 +18,13 @@ jobs:
         run: dart pub get
       - name: Analyze
         run: dart analyze
-        working-directory: gha
+        working-directory: pkgs/gha
       - name: Format check
         run: dart format --set-exit-if-changed .
-        working-directory: gha
+        working-directory: pkgs/gha
       - name: Run tests
         run: dart test
-        working-directory: gha
+        working-directory: pkgs/gha
   gha_cli:
     name: Build and Test (gha_cli)
     runs-on: ubuntu-latest
@@ -37,10 +37,10 @@ jobs:
         run: dart pub get
       - name: Analyze
         run: dart analyze
-        working-directory: gha_cli
+        working-directory: pkgs/gha_cli
       - name: Format check
         run: dart format --set-exit-if-changed .
-        working-directory: gha_cli
+        working-directory: pkgs/gha_cli
       - name: Run tests
         run: dart test
-        working-directory: gha_cli
+        working-directory: pkgs/gha_cli
