@@ -6,8 +6,8 @@ on:
   push:
   pull_request:
 jobs:
-  build:
-    name: Build and Test
+  gha:
+    name: Build and Test (gha)
     runs-on: ubuntu-latest
     steps:
       - uses: "actions/checkout@v4"
@@ -18,7 +18,29 @@ jobs:
         run: dart pub get
       - name: Analyze
         run: dart analyze
+        working-directory: gha
       - name: Format check
         run: dart format --set-exit-if-changed .
+        working-directory: gha
       - name: Run tests
         run: dart test
+        working-directory: gha
+  gha_cli:
+    name: Build and Test (gha_cli)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: "actions/checkout@v4"
+      - uses: "dart-lang/setup-dart@v1"
+        with:
+          sdk: stable
+      - name: Install dependencies
+        run: dart pub get
+      - name: Analyze
+        run: dart analyze
+        working-directory: gha_cli
+      - name: Format check
+        run: dart format --set-exit-if-changed .
+        working-directory: gha_cli
+      - name: Run tests
+        run: dart test
+        working-directory: gha_cli
