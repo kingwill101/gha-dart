@@ -2,7 +2,7 @@ name: gha_cli
 description: >
   CLI tool for generating GitHub Actions workflows in Dart with init templates,
   workflow generation, and type-safe workflow definitions.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/kingwill101/gha-dart
 topics:
   - github-actions

@@ -630,8 +630,8 @@ void main() {
                 r"needs.matrix-build.result == 'success' && needs.integration-tests.result == 'success'",
             env: {'SLACK_WEBHOOK': r'${{ secrets.SLACK_WEBHOOK }}'},
             run: '''
-              curl -X POST -H 'Content-type: application/json' \
-                --data '{"text":"✅ Build succeeded!"}' \
+              curl -X POST -H 'Content-type: application/json' 
+                --data '{"text":"✅ Build succeeded!"}' 
                 \$SLACK_WEBHOOK
             ''',
           ),
@@ -641,8 +641,8 @@ void main() {
             ifCondition: 'failure()',
             env: {'SLACK_WEBHOOK': r'${{ secrets.SLACK_WEBHOOK }}'},
             run: '''
-              curl -X POST -H 'Content-type: application/json' \
-                --data '{"text":"❌ Build failed!"}' \
+              curl -X POST -H 'Content-type: application/json' 
+                --data '{"text":"❌ Build failed!"}' 
                 \$SLACK_WEBHOOK
             ''',
           ),

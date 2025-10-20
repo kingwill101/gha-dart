@@ -2,7 +2,7 @@ name: gha
 description: >
   Type-safe GitHub Actions workflows in Dart with strongly typed models,
   action helpers, and YAML generation for creating workflows programmatically.
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/kingwill101/gha-dart
 topics:
   - github-actions
