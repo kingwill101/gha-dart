@@ -10,13 +10,21 @@ void main() {
         checkout(),
         setupDart(sdk: 'stable'),
         Step(name: 'Install dependencies', run: 'dart pub get'),
-        Step(name: 'Analyze', run: 'dart analyze', workingDirectory: name),
+        Step(
+          name: 'Analyze',
+          run: 'dart analyze',
+          workingDirectory: "pkgs/$name",
+        ),
         Step(
           name: 'Format check',
           run: 'dart format --set-exit-if-changed .',
-          workingDirectory: name,
+          workingDirectory: "pkgs/$name",
         ),
-        Step(name: 'Run tests', run: 'dart test', workingDirectory: name),
+        Step(
+          name: 'Run tests',
+          run: 'dart test',
+          workingDirectory: "pkgs/$name",
+        ),
       ],
     );
   }
